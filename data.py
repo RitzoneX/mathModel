@@ -6,16 +6,19 @@ import pandas as pd
 
 def get_data(filename):
     df = pd.read_excel(filename, na_values=['?'])
-    df.drop(df.tail(2).index, inplace=True)  # drop last 2 rows
     return df
 
 
 def get_data1():
-    return get_data('data/附件1.xlsx')
+    df = get_data('data/附件1.xlsx')
+    df.drop(df.tail(2).index, inplace=True)
+    return df
 
 
 def get_data2():
-    return get_data('data/附件2.xlsx')
+    df = get_data('data/附件2.xlsx')
+    df.drop(df.tail(3).index, inplace=True)
+    return df
 
 
 def get_data1c():

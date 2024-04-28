@@ -3,6 +3,8 @@
 
 import pandas as pd
 
+import data
+
 
 def data_clean(df):
     # x = '特征8'
@@ -27,10 +29,9 @@ def data_clean(df):
 
 
 if __name__ == '__main__':
-    df = pd.read_excel('附件1.xlsx', na_values=['?'])
-    df.drop(df.tail(2).index, inplace=True)  # drop last 2 rows
+    df = data.get_data2()
     # print(df.info())
-    # df.describe().to_excel('describe.xlsx')
+    df.describe().to_excel('data/describe2.xlsx')
 
-    data_clean(df)
-    df.to_excel('附件1_改.xlsx')
+    # data_clean(df)
+    # df.to_excel('附件1_改.xlsx')
