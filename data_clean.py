@@ -13,8 +13,8 @@ def data_clean(df):
     # print('数据个数 {}.'.format(df.shape[0]))
 
     # 处理数据
-    print(df.isnull().sum())
-    print('缺失值共有%s个' % df.isnull().sum().sum())
+    # print(df.isnull().sum())
+    # print('缺失值共有%s个' % df.isnull().sum().sum())
     for i in range(1, 10):
         col = '特征%s' % i
         m = df[col].mode()[0]
@@ -25,7 +25,11 @@ def data_clean(df):
 
 
 if __name__ == '__main__':
-    df = pd.read_excel('附件2.xlsx', na_values=['?'])
+    df = pd.read_excel('附件1.xlsx', na_values=['?'])
     df.drop(df.tail(2).index, inplace=True)  # drop last 2 rows
-    data_clean(df)
-    df.to_excel('附件2_改.xlsx')
+    print(df.info())
+    print(df.describe().to_string())
+
+
+    # data_clean(df)
+    # df.to_excel('附件1_改.xlsx')
