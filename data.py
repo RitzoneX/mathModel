@@ -14,5 +14,9 @@ def get_data1():
     return get_data('data/附件1.xlsx')
 
 
+def get_data2():
+    return get_data('data/附件2.xlsx')
+
+
 def get_data1c():
     return get_data('data/附件1_改.xlsx')
