@@ -7,6 +7,7 @@ from sklearn.metrics import roc_auc_score
 from sklearn.metrics import roc_curve
 import seaborn as sns
 
+import data
 from data_clean import data_clean
 
 sns.set(style="white")  # 设置seaborn画图的背景为白色
@@ -50,25 +51,24 @@ def generate_mode(df=None):
     # sns.heatmap(correlation_matrix, annot=True, cmap='coolwarm', fmt=".2f")
     # plt.show()
 
-    # logit_roc_auc = roc_auc_score(y_test, log_regression.predict(x_test))
-    # fpr, tpr, thresholds = roc_curve(y_test, log_regression.predict_proba(x_test)[:, 1])
-    # plt.figure()
-    # plt.plot(fpr, tpr, label='Logistic Regression (area = %0.2f)' % logit_roc_auc)
-    # plt.plot([0, 1], [0, 1], 'r--')
-    # plt.xlim([0.0, 1.0])
-    # plt.ylim([0.0, 1.05])
-    # plt.xlabel('False Positive Rate')
-    # plt.ylabel('True Positive Rate')
-    # plt.title('Receiver operating characteristic')
-    # plt.legend(loc="lower right")
-    # plt.savefig('Log_ROC')
-    # plt.show()
+    logit_roc_auc = roc_auc_score(y_test, log_regression.predict(x_test))
+    fpr, tpr, thresholds = roc_curve(y_test, log_regression.predict_proba(x_test)[:, 1])
+    plt.figure()
+    plt.plot(fpr, tpr, label='Logistic Regression (area = %0.2f)' % logit_roc_auc)
+    plt.plot([0, 1], [0, 1], 'r--')
+    plt.xlim([0.0, 1.0])
+    plt.ylim([0.0, 1.05])
+    plt.xlabel('False Positive Rate')
+    plt.ylabel('True Positive Rate')
+    plt.title('Receiver operating characteristic')
+    plt.legend(loc="lower right")
+    plt.savefig('Log_ROC')
+    plt.show()
 
 
 def import_data():
     # 将数据读入 DataFrame
-    df = pd.read_excel('附件1.xlsx', na_values=['?'])
-    df.drop(df.tail(2).index, inplace=True)  # drop last 2 rows
+    df = data.get_data1()
 
     data_clean(df)
 

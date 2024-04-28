@@ -1,3 +1,6 @@
+#!/usr/bin/python
+# -*- coding: UTF-8 -*-
+
 import seaborn as sns
 import matplotlib.pyplot as plt
 
@@ -8,7 +11,10 @@ import data
 
 df = data.get_data1()
 
-fig = sns.boxplot(data=df)
+print(df.isnull().sum())
+print("共有%s个空值" % df.isnull().sum().sum())
 
-fig.get_figure().savefig('imgs/boxplot.png', dpi = 400)
+fig = sns.boxplot(data=df.isnull().sum())
+
+fig.get_figure().savefig('imgs/boxplot.png', dpi=400)
 plt.show()

@@ -1,3 +1,6 @@
+#!/usr/bin/python
+# -*- coding: UTF-8 -*-
+
 import pandas as pd
 
 
@@ -6,7 +9,6 @@ def data_clean(df):
     # sns.countplot(x=x, data=df, palette='Set2')
     # plt.show()
     # print(df[x].value_counts())
-
 
     # 预览数据
     df['类别'].replace({2: 0, 4: 1}, inplace=True)
