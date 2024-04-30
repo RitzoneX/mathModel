@@ -1,8 +1,6 @@
 #!/usr/bin/python
 # -*- coding: UTF-8 -*-
 
-import pandas as pd
-
 import data
 
 
@@ -33,5 +31,5 @@ if __name__ == '__main__':
     # print(df.info())
     df.describe().to_excel('data/describe2.xlsx')
 
-    # data_clean(df)
-    # df.to_excel('附件1_改.xlsx')
+    data_clean(df)
+    df.to_excel('附件1_改.xlsx')

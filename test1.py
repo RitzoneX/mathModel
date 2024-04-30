@@ -45,38 +45,12 @@ def generate_mode(df=None):
 
     print("Accuracy:", metrics.accuracy_score(y_test, y_pred))
 
-    # # 计算 Pearson 相关系数
-    # correlation_matrix = df.corr()
-    # # 使用热图可视化 Pearson 相关系数
-    # sns.heatmap(correlation_matrix, annot=True, cmap='coolwarm', fmt=".2f")
-    # plt.show()
-
-    logit_roc_auc = roc_auc_score(y_test, log_regression.predict(x_test))
-    fpr, tpr, thresholds = roc_curve(y_test, log_regression.predict_proba(x_test)[:, 1])
-    plt.figure()
-    plt.plot(fpr, tpr, label='Logistic Regression (area = %0.2f)' % logit_roc_auc)
-    plt.plot([0, 1], [0, 1], 'r--')
-    plt.xlim([0.0, 1.0])
-    plt.ylim([0.0, 1.05])
-    plt.xlabel('False Positive Rate')
-    plt.ylabel('True Positive Rate')
-    plt.title('Receiver operating characteristic')
-    plt.legend(loc="lower right")
-    plt.savefig('Log_ROC')
-    plt.show()
-
 
 def import_data():
     # 将数据读入 DataFrame
     df = data.get_data1()
 
     data_clean(df)
-
-    # # 相关系数
-    # correlation_matrix = df.corr()
-    # # 使用热图可视化 Pearson 相关系数
-    # sns.heatmap(correlation_matrix, annot=True, cmap='coolwarm', fmt=".2f")
-    # plt.show()
 
     generate_mode(df)
 
@@ -87,9 +61,6 @@ def predict():
     df = pd.read_excel('附件2.xlsx', na_values=['?'])
     df.drop(df.tail(3).index, inplace=True)  # 删除最后3行
 
-    # print(df)
-    # df.plot()
-    # plt.show()
     print('附件2包含的数据个数 {}.'.format(df.shape[0]))
 
     # print(df.isnull().sum())
@@ -104,4 +75,4 @@ def predict():
 
 if __name__ == '__main__':
     import_data()
-    # predict()
+    predict()
